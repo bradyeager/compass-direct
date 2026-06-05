@@ -1,101 +1,142 @@
+import "./home.css";
+import { listProducts, serviceProducts } from "@/lib/site-data";
+
+const stats: [string, string][] = [
+  ["230M+", "consumer households"],
+  ["30M+", "U.S. businesses"],
+  ["27,000+", "campaigns launched"],
+  ["94%", "deliverability guarantee"],
+];
+
+const lifecycle = [
+  "New Movers", "New Homeowners", "New Parents", "New Auto Owners",
+  "New Businesses", "Building Permits", "New Divorce", "New Retirees",
+];
+
 export default function Home() {
   return (
-    <>
-      <header className="site-header">
-        <div className="container header-inner">
-          <a className="brand" href="#top">
-            Compass<span>Direct</span>
+    <div className="home2">
+      <header className="h2-header">
+        <div className="h2-bar">
+          <a className="h2-logo" href="/" aria-label="Compass Direct home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/media/logo.jpg" alt="Compass Direct" />
           </a>
-          <nav className="nav">
+          <nav className="h2-nav">
+            <a href="#lists">Lists</a>
             <a href="#services">Services</a>
-            <a href="#work">Work</a>
-            <a href="#about">About</a>
-            <a className="btn btn-sm" href="#contact">Get in touch</a>
+            <a href="/pricing">Pricing</a>
+            <a href="/our-story">About</a>
+            <a className="h2-btn" href="/contact-us">Get a free count</a>
           </nav>
         </div>
       </header>
 
-      <main id="top">
-        <section className="hero">
-          <div className="container">
-            <p className="eyebrow">Direct marketing</p>
-            <h1>
-              Get your message in front
+      <section className="h2-hero">
+        <div className="h2-wrap">
+          <p className="h2-eyebrow">Direct mail &amp; data · since 2007</p>
+          <h1>
+            Your next customer is
+            <br />
+            <span>one mailing away.</span>
+          </h1>
+          <p className="h2-lead">
+            Targeted mailing lists and done-for-you direct mail that put your offer in front of the
+            people most likely to buy — new movers, new homeowners, and millions more.
+          </p>
+          <div className="h2-cta-row">
+            <a className="h2-btn h2-btn-lg" href="/contact-us">Get my free count →</a>
+            <a className="h2-btn-ghost" href="#lists">Browse the lists</a>
+          </div>
+          <p className="h2-trust">
+            Trusted by <strong>3,000+</strong> businesses · <strong>A+</strong> BBB rating · 94%
+            deliverability guarantee
+          </p>
+        </div>
+      </section>
+
+      <section className="h2-stats">
+        <div className="h2-wrap h2-stats-grid">
+          {stats.map(([n, c]) => (
+            <div key={c}>
+              <div className="h2-stat-n">{n}</div>
+              <div className="h2-stat-c">{c}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="lists" className="h2-section">
+        <div className="h2-wrap">
+          <h2 className="h2-h2">Mailing lists for every audience.</h2>
+          <p className="h2-sub">Pinpoint exactly who you want to reach — and reach them first.</p>
+          <div className="h2-cards">
+            {listProducts.map((p) => (
+              <a className="h2-card" href={`/${p.slug}`} key={p.slug}>
+                <h3>{p.name}</h3>
+                <p>{p.tagline}</p>
+                <span className="h2-arrow">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="h2-section h2-dark">
+        <div className="h2-wrap">
+          <h2 className="h2-h2">We don&apos;t just sell the list — we run the campaign.</h2>
+          <p className="h2-sub">From the data to the mailbox to the inbox, done for you.</p>
+          <div className="h2-svc">
+            {serviceProducts.map((p) => (
+              <a className="h2-svc-card" href={`/${p.slug}`} key={p.slug}>
+                <h3>{p.name}</h3>
+                <p>{p.tagline}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="h2-section">
+        <div className="h2-wrap">
+          <h2 className="h2-h2">Reach them the moment they&apos;re ready to buy.</h2>
+          <p className="h2-sub">Life events trigger spending. We help you show up first.</p>
+          <div className="h2-tags">
+            {lifecycle.map((t) => (
+              <span key={t}>{t}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="h2-cta">
+        <div className="h2-wrap">
+          <h2>Ready to find your next customer?</h2>
+          <p>Tell us who you want to reach. We&apos;ll pull a free count and quote — no obligation.</p>
+          <a className="h2-btn h2-btn-lg h2-btn-invert" href="/contact-us">Get my free count →</a>
+        </div>
+      </section>
+
+      <footer className="h2-footer">
+        <div className="h2-wrap h2-foot">
+          <div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="h2-foot-logo" src="/media/logo.jpg" alt="Compass Direct" />
+            <p>
+              2307 Fenton Parkway, Suite 107 · San Diego, CA 92108
               <br />
-              of the right people.
-            </h1>
-            <p className="sub">
-              Compass Direct plans, builds, and runs targeted direct-mail and
-              multichannel campaigns that turn the right audience into
-              measurable response.
+              1·800·505·0057 · info@compass-direct.com
             </p>
-            <div className="cta-row">
-              <a className="btn" href="#contact">
-                Start a campaign
-              </a>
-              <a className="btn btn-ghost" href="#services">
-                What we do →
-              </a>
-            </div>
           </div>
-        </section>
-
-        <section id="services" className="section">
-          <div className="container">
-            <h2>What we do</h2>
-            <p className="section-sub">
-              Full-service direct response, from the list to the letterbox.
-            </p>
-            <div className="cards">
-              <article className="card">
-                <div className="ic">✉️</div>
-                <h3>Targeted direct mail</h3>
-                <p>
-                  The right offer to the right list — designed, printed, and
-                  delivered to drive a response you can measure.
-                </p>
-              </article>
-              <article className="card">
-                <div className="ic">🎯</div>
-                <h3>Data &amp; list strategy</h3>
-                <p>
-                  Find and segment the audiences most likely to act, then reach
-                  them with precision instead of guesswork.
-                </p>
-              </article>
-              <article className="card">
-                <div className="ic">📈</div>
-                <h3>Campaign management</h3>
-                <p>
-                  End-to-end execution and tracking, so every send is
-                  measurable, repeatable, and built to improve.
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" className="section cta-band">
-          <div className="container">
-            <h2>Ready to reach your customers?</h2>
-            <p className="section-sub">
-              Tell us about your goals and we&apos;ll map the campaign.
-            </p>
-            <a className="btn btn-invert" href="#contact">
-              Get in touch
-            </a>
-          </div>
-        </section>
-      </main>
-
-      <footer className="site-footer">
-        <div className="container footer-inner">
-          <span>© 2026 Compass Direct</span>
-          <span className="muted">Rebuilt for 2026 · preview</span>
+          <nav>
+            <a href="#lists">Lists</a>
+            <a href="/postcards">Services</a>
+            <a href="/pricing">Pricing</a>
+            <a href="/our-story">About</a>
+            <a href="/contact-us">Contact</a>
+          </nav>
         </div>
       </footer>
-
-      <div className="preview-badge">Preview build · placeholder copy</div>
-    </>
+    </div>
   );
 }
