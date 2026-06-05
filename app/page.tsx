@@ -1,19 +1,60 @@
+import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CallChatContact } from "@/components/CallChatContact";
 import { listProducts } from "@/lib/site-data";
 
-const pillars: [string, string, string, string][] = [
-  ["📋", "Powerful Marketing Lists", "Target new prospects with laser guided, state of the art databases.", "/consumer-lists"],
-  ["✉️", "Postcard Marketing", "Win new customers with brilliantly timed postcard marketing sequences.", "/postcards"],
-  ["📧", "Email Marketing", "Reach millions of prospects and convert them to new customers.", "/email-marketing"],
-  ["🔄", "Data Enhancement", "Refresh, append, & enhance your lists with the freshest data available.", "/data-enhancement"],
+const Atom = (
+  <svg className="feat-ic" viewBox="0 0 64 64" aria-hidden="true">
+    <g fill="none" stroke="#2EA3F2" strokeWidth="2.5">
+      <circle cx="32" cy="32" r="6" />
+      <ellipse cx="32" cy="32" rx="28" ry="11" />
+      <ellipse cx="32" cy="32" rx="28" ry="11" transform="rotate(60 32 32)" />
+      <ellipse cx="32" cy="32" rx="28" ry="11" transform="rotate(120 32 32)" />
+    </g>
+  </svg>
+);
+const IdCard = (
+  <svg className="feat-ic" viewBox="0 0 64 64" aria-hidden="true">
+    <g fill="none" stroke="#2EA3F2" strokeWidth="2.5" strokeLinecap="round">
+      <rect x="8" y="16" width="48" height="32" rx="4" />
+      <circle cx="23" cy="30" r="6" />
+      <path d="M14 43c1.5-5 16-5 18 0" />
+      <line x1="38" y1="27" x2="50" y2="27" />
+      <line x1="38" y1="34" x2="50" y2="34" />
+    </g>
+  </svg>
+);
+const Laptop = (
+  <svg className="feat-ic" viewBox="0 0 64 64" aria-hidden="true">
+    <g fill="none" stroke="#2EA3F2" strokeWidth="2.5" strokeLinejoin="round">
+      <rect x="14" y="16" width="36" height="24" rx="2" />
+      <path d="M8 48h48l-5-8H13z" />
+    </g>
+  </svg>
+);
+const Bullseye = (
+  <svg className="feat-ic" viewBox="0 0 64 64" aria-hidden="true">
+    <g fill="none" stroke="#2EA3F2" strokeWidth="2.5">
+      <circle cx="32" cy="32" r="22" />
+      <circle cx="32" cy="32" r="13" />
+    </g>
+    <circle cx="32" cy="32" r="4" fill="#2EA3F2" />
+  </svg>
+);
+
+const features: { icon: ReactNode; title: string; desc: string; href: string }[] = [
+  { icon: Atom, title: "Powerful Marketing Lists", desc: "Target new prospects with laser guided, state of the art databases.", href: "/consumer-lists" },
+  { icon: IdCard, title: "Postcard Marketing", desc: "Win new customers with brilliantly timed postcard marketing sequences.", href: "/postcards" },
+  { icon: Laptop, title: "E-mail Marketing", desc: "Reach millions of prospects and convert them to new customers.", href: "/email-marketing" },
+  { icon: Bullseye, title: "Data Enhancement", desc: "Refresh, append, & enhance your lists with the freshest data available.", href: "/data-enhancement" },
 ];
 
 const triggers: string[] = [
   "New Movers", "New Homeowners", "New Pre-Movers", "New Parents", "New Expecting Parents",
-  "New Auto Owners", "New Businesses", "Building Permits", "New Marriages", "New Engagements",
-  "New Divorce", "New Retirees", "New Graduates", "New Teen Drivers", "Home Equity Loans",
+  "New Auto Owners", "New Businesses", "New Building Permits", "New Marriages", "New Engagements",
+  "New Divorce", "New Retirees", "New Graduates", "New Teen Drivers", "New Home Equity Loans",
+  "New Bankruptcy",
 ];
 
 export default function Home() {
@@ -23,15 +64,22 @@ export default function Home() {
       <main id="top">
         <section className="hero">
           <div className="container">
-            <p className="eyebrow">Guiding you towards new customers</p>
-            <h1>Finding your next customer just got a whole lot easier.</h1>
-            <p className="sub">
-              Direct marketing solutions for small businesses — targeted mailing lists, perfectly
-              timed postcard and email campaigns, and data you can trust.
-            </p>
-            <div className="cta-row">
-              <a className="btn" href="/contact-us">Request a free count</a>
-              <a className="btn btn-ghost" href="#products">See our lists →</a>
+            <h1>Finding your next customer just got a whole lot easier</h1>
+            <p className="sub">Direct marketing solutions for small businesses</p>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
+            <h2>Discover how Compass Direct can help your business <em>GROW!</em></h2>
+            <div className="features">
+              {features.map((f) => (
+                <a className="feature" href={f.href} key={f.title}>
+                  {f.icon}
+                  <h3>{f.title}</h3>
+                  <p>{f.desc}</p>
+                </a>
+              ))}
             </div>
           </div>
         </section>
@@ -43,40 +91,23 @@ export default function Home() {
           </div>
         </div>
 
-        <section id="services" className="section">
-          <div className="container">
-            <h2>Discover how Compass Direct can help your business <em>GROW!</em></h2>
-            <div className="grid grid-4">
-              {pillars.map(([icon, title, desc, href]) => (
-                <a className="card" href={href} key={title}>
-                  <div className="ic">{icon}</div>
-                  <h3>{title}</h3>
-                  <p>{desc}</p>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="lifecycle">
           <div className="container">
-            <p className="eyebrow eyebrow-light">Lifecycle Marketing</p>
-            <h2>Reach new prospects just before they&apos;re about to buy.</h2>
-            <p className="sub sub-light">
-              Life events are when buying decisions get made. Show up at exactly the right moment
-              with trigger audiences like:
-            </p>
-            <div className="tags">
-              {triggers.map((t) => (
-                <span className="tag" key={t}>{t}</span>
-              ))}
+            <p className="eyebrow">Lifecycle Marketing</p>
+            <h2>Reach new prospects just before they are about to buy.</h2>
+            <div className="lifecycle-box">
+              <ul className="lifecycle-list">
+                {triggers.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
 
         <section id="products" className="section alt">
           <div className="container">
-            <h2>Marketing lists for every audience</h2>
+            <h2>Powerful marketing lists</h2>
             <p className="section-sub">
               Target new prospects with laser guided, state of the art databases — filtered to
               exactly who you want to reach.
@@ -92,12 +123,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="section about">
+        <section className="section">
           <div className="container about-inner">
             <div>
-              <p className="eyebrow">Our story</p>
+              <p className="eyebrow">Our Story</p>
               <h2>We&apos;re only here for one reason: to make you a marketing rockstar.</h2>
-              <a className="btn btn-ghost" href="/our-story">Read our story →</a>
+              <a className="btn btn-ghost" href="/our-story">Read our story</a>
             </div>
             <div>
               <p>

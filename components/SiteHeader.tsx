@@ -5,7 +5,7 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="container header-inner">
         <a className="brand" href="/" aria-label="Compass Direct home">
-          <svg className="logo-mark" viewBox="0 0 48 48" width="36" height="36" aria-hidden="true">
+          <svg className="logo-mark" viewBox="0 0 48 48" width="40" height="40" aria-hidden="true">
             <circle cx="24" cy="24" r="21" fill="none" stroke="#2EA3F2" strokeWidth="3" />
             <polygon points="24,8 30,24 24,24" fill="#F78F1E" />
             <polygon points="24,8 18,24 24,24" fill="#ffb25e" />
@@ -13,8 +13,11 @@ export function SiteHeader() {
             <polygon points="24,40 18,24 24,24" fill="#82c8f4" />
             <circle cx="24" cy="24" r="3" fill="#fff" />
           </svg>
-          <span className="logo-text">
-            <span className="b1">compass</span> <span className="b2">direct</span>
+          <span className="logo-stack">
+            <span className="logo-text">
+              <span className="b1">compass</span> <span className="b2">direct</span>
+            </span>
+            <span className="logo-tag">guiding you towards new customers</span>
           </span>
         </a>
 
