@@ -6,8 +6,9 @@ export type Product = {
   badges: [string, string][];
   facts: string[];
   filters?: string[];
+  stats?: { value: string; caption: string }[];
   note?: string;
-  recovered?: string; // snapshot year if older than the rest (verify specifics)
+  recovered?: string;
 };
 
 export const listProducts: Product[] = [
@@ -37,6 +38,11 @@ export const listProducts: Product[] = [
       "Homeowner / renter", "Length of residence", "Net worth", "Occupation",
       "Lifestyle & interests", "Geography (radius / polygon)",
     ],
+    stats: [
+      { value: "74", caption: "free filters included" },
+      { value: "3,296", caption: "premium filters available" },
+      { value: "94%", caption: "deliverability guarantee" },
+    ],
   },
   {
     slug: "business-lists",
@@ -64,6 +70,11 @@ export const listProducts: Product[] = [
       "Executive job title", "Job function", "Years in business", "Location type", "Franchises",
       "Small business owner", "SIC code", "NAICS code", "Minority owned", "Women owned",
     ],
+    stats: [
+      { value: "30,000,000", caption: "U.S. businesses" },
+      { value: "25", caption: "free filters included" },
+      { value: "94%", caption: "deliverability guarantee" },
+    ],
   },
   {
     slug: "new-homeowner-lists",
@@ -86,6 +97,11 @@ export const listProducts: Product[] = [
       "Radius and polygonal geographic selection tools",
       "DNC-scrubbed phone numbers available",
     ],
+    stats: [
+      { value: "50,000", caption: "new homeowners added weekly" },
+      { value: "94%", caption: "deliverability guarantee" },
+      { value: "100%", caption: "U.S. coverage" },
+    ],
   },
   {
     slug: "new-mover-lists",
@@ -105,6 +121,11 @@ export const listProducts: Product[] = [
       "Believed to be the most comprehensive new mover mailing list on the market",
       "Coverage available in 100% of the United States",
       "Radius and polygonal geographic selection tools",
+    ],
+    stats: [
+      { value: "6,909,190", caption: "new movers in the last 6 months" },
+      { value: "317,812", caption: "new movers last week" },
+      { value: "711,482", caption: "new movers with phones" },
     ],
   },
   {
@@ -127,6 +148,11 @@ export const listProducts: Product[] = [
       "Contact info for all parties on the permit: Owner, Builder, Designer & Architect",
       "Free historical permit data",
     ],
+    stats: [
+      { value: "20,000", caption: "new permits added weekly" },
+      { value: "70%", caption: "U.S. coverage" },
+      { value: "30", caption: "day money-back guarantee" },
+    ],
   },
   {
     slug: "new-parent-lists",
@@ -147,6 +173,16 @@ export const listProducts: Product[] = [
       "Updated daily; new records added monthly",
       "Segments: Expecting Parents, New Parents, and Newer Parents",
     ],
+    filters: [
+      "Age", "# of Children", "Property Type", "Income", "Interests", "Pool owners", "Gender",
+      "Hobbies", "Life Insurance", "Net Worth", "Type of Car", "Ethnicity", "Education",
+      "Date of Birth", "Residence Length", "Occupation", "Homeowner / Renter", "Phone #",
+    ],
+    stats: [
+      { value: "19,792", caption: "Expecting Parents added (past 6 months)" },
+      { value: "2,655,939", caption: "New Parents added (past 12 months)" },
+      { value: "5,017,480", caption: "New(er) Parents added (past 36 months)" },
+    ],
   },
   {
     slug: "new-divorce-lists",
@@ -166,6 +202,16 @@ export const listProducts: Product[] = [
       "Updated daily",
       "CASS certified, NCOA'ed, and scrubbed against the DNC registry",
       "74 free filters and 3,296 premium filters",
+    ],
+    filters: [
+      "Age", "Income", "Property Type", "Gender", "Buying Activity", "Life Insurance", "Net Worth",
+      "Type of Car", "Ethnicity", "Education", "Date of Birth", "Credit Score", "Occupation",
+      "Homeowner / Renter", "Phone Number", "Political Party",
+    ],
+    stats: [
+      { value: "31", caption: "unique sources" },
+      { value: "134,990", caption: "new divorcees in the past 6 months" },
+      { value: "94%", caption: "deliverability guarantee" },
     ],
     note: "A real estate, mortgage, and financial professional's dream — new divorce filers are highly likely to list their home for sale, and each will soon need a new one. Reach them with your services right when they need them most.",
   },
@@ -210,6 +256,7 @@ export const serviceProducts: Product[] = [
       "Email Appends & Reverse Appends — match emails to postal/phone data and vice versa",
       "Full service: strategy, creative design, testing & optimization, subject-line testing, reporting & analysis",
       "Real-time tracking with open rates, click-throughs, and response analytics",
+      "Note: We offer email marketing — we do not sell email lists. CAN-SPAM compliant, opt-in addresses only.",
     ],
   },
   {
