@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CallChatContact } from "@/components/CallChatContact";
 import type { Product } from "@/lib/site-data";
+import { pricingBySlug } from "@/lib/pricing";
 
 const badgeIc = (
   <svg className="badge-ic" viewBox="0 0 44 44" fill="none" stroke="#2EA3F2" strokeWidth="2.5" aria-hidden="true">
@@ -47,6 +48,7 @@ const trust: { icon: ReactNode; title: string; desc: string }[] = [
 
 export function ProductPage({ data }: { data: Product }) {
   const eyebrow = data.kind === "list" ? "List Products" : "Marketing Services";
+  const pricing = pricingBySlug[data.slug];
   return (
     <>
       <SiteHeader />
@@ -114,6 +116,42 @@ export function ProductPage({ data }: { data: Product }) {
           </section>
         )}
 
+        {pricing && (
+          <section className="section alt">
+            <div className="container">
+              <h2>Plans &amp; Pricing</h2>
+              <p className="section-sub">
+                The lowest minimums around — and we&apos;ll beat any competitor&apos;s quote by 10%.
+              </p>
+              <div className="pricing">
+                {pricing.map((t) => (
+                  <div className={`price-card${t.featured ? " featured" : ""}`} key={t.name}>
+                    <div className="price-head">
+                      <h3>{t.name}</h3>
+                      {t.sub && <span>{t.sub}</span>}
+                    </div>
+                    <div className="price-body">
+                      <div className="price-amt">
+                        {t.price}
+                        <small>{t.unit}</small>
+                      </div>
+                      <ul>
+                        {t.bullets.map((b) => (
+                          <li key={b}>{b}</li>
+                        ))}
+                      </ul>
+                      <a className="btn btn-ghost" href="/contact-us">{t.cta}</a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="recovered-note">
+                Prices recovered from the archived site — please confirm current pricing before launch.
+              </p>
+            </div>
+          </section>
+        )}
+
         {data.note && (
           <section className="section">
             <div className="container">
@@ -122,7 +160,7 @@ export function ProductPage({ data }: { data: Product }) {
           </section>
         )}
 
-        <section className="section alt">
+        <section className="section">
           <div className="container steps-wrap">
             <div className="steps-img">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -141,7 +179,7 @@ export function ProductPage({ data }: { data: Product }) {
           </div>
         </section>
 
-        <section className="section">
+        <section className="section alt">
           <div className="container">
             <div className="trust">
               {trust.map((t) => (
