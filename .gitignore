@@ -1,0 +1,29 @@
+# Dependencies / build output
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment & secrets — never commit real keys
+.env
+.env.*
+!.env.example
+
+# ──────────────────────────────────────────────────────────────────────────
+# Forensics / untrusted recovery material from the compromised box — NEVER commit.
+# (Quarantine lives outside this repo, but these patterns are a hard backstop.)
+# ──────────────────────────────────────────────────────────────────────────
+_forensics/
+*.sql
+*.zip
+
+# Raw, UNSANITIZED images salvaged from the hacked server.
+# Run `node scripts/sanitize-images.mjs ./assets/media ./public/media`
+# to produce clean, re-encoded copies in public/media (which IS safe to commit).
+/assets/
+
+# OS cruft
+.DS_Store
+Thumbs.db
