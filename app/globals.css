@@ -341,6 +341,218 @@ em {
   color: #8b9199;
 }
 
+/* SVG logo */
+.brand {
+  align-items: center;
+  gap: 0.55rem;
+}
+.logo-mark {
+  flex: none;
+}
+.logo-text {
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  gap: 0.3ch;
+}
+
+/* Dropdown nav */
+.has-dropdown {
+  position: relative;
+}
+.has-dropdown > a {
+  cursor: pointer;
+}
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 215px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px -20px rgba(32, 38, 46, 0.35);
+  padding: 0.4rem;
+  display: none;
+  flex-direction: column;
+  z-index: 20;
+}
+.has-dropdown:hover .dropdown {
+  display: flex;
+}
+.dropdown a {
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.dropdown a:hover {
+  background: var(--bg-alt);
+  color: var(--orange-dk);
+}
+
+/* Inner-page hero */
+.hero-sm {
+  padding: clamp(3rem, 8vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
+}
+.hero-sm h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+/* Clickable cards */
+a.card {
+  display: block;
+}
+
+/* Benefit badges */
+.badges {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.1rem;
+}
+.badge-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  background: #fff;
+}
+.badge-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  color: var(--orange-dk);
+}
+.badge-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Facts / two-column content */
+.facts-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+.facts {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+.facts li {
+  position: relative;
+  padding: 0.4rem 0 0.4rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+.facts li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+/* Filter tags on light background */
+.tags-dark {
+  justify-content: flex-start;
+  max-width: none;
+}
+.tags-dark .tag {
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+.tags-dark a.tag:hover {
+  border-color: var(--orange);
+  color: var(--orange-dk);
+}
+
+/* Notes */
+.note-block {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 70ch;
+  border-left: 4px solid var(--orange);
+  padding-left: 1.2rem;
+  color: var(--ink);
+}
+.recovered-note {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* Call / Chat / Contact trio */
+.cc-section {
+  background: var(--bg-alt);
+}
+.cc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.1rem;
+  margin-top: 1.5rem;
+}
+.cc-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+}
+.cc-card .ic {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+.cc-card h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.1rem;
+}
+.cc-card a {
+  color: var(--orange-dk);
+  font-weight: 600;
+}
+
+/* FAQ accordion */
+.faq-list {
+  max-width: 760px;
+}
+.faq-list details {
+  border-bottom: 1px solid var(--line);
+}
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 0.8rem 0;
+  list-style: none;
+}
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+.faq-list summary::before {
+  content: "+";
+  color: var(--orange);
+  font-weight: 700;
+  margin-right: 0.6rem;
+}
+.faq-list details[open] summary::before {
+  content: "–";
+}
+.faq-list p {
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+@media (max-width: 760px) {
+  .facts-wrap {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 820px) {
   .about-inner {
     grid-template-columns: 1fr;
