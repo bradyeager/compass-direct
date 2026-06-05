@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CallChatContact } from "@/components/CallChatContact";
-import { listProducts } from "@/lib/site-data";
 
 const Atom = (
   <svg className="feat-ic" viewBox="0 0 64 64" aria-hidden="true">
@@ -50,6 +49,47 @@ const features: { icon: ReactNode; title: string; desc: string; href: string }[]
   { icon: Bullseye, title: "Data Enhancement", desc: "Refresh, append, & enhance your lists with the freshest data available.", href: "/data-enhancement" },
 ];
 
+const blocks: {
+  img: string; alt: string; title: string; bullets: string[]; cta: [string, string]; reverse: boolean;
+}[] = [
+  {
+    img: "/media/laptop.jpg",
+    alt: "Compass Direct online list builder",
+    title: "Powerful Marketing Lists",
+    bullets: [
+      "230M+ consumer households and 30M+ U.S. businesses",
+      "Updated daily, with a 94% deliverability guarantee",
+      "Free and premium filters to pinpoint your exact audience",
+    ],
+    cta: ["Browse our lists", "/consumer-lists"],
+    reverse: false,
+  },
+  {
+    img: "/media/postcards.jpg",
+    alt: "Compass Direct postcard marketing",
+    title: "Postcard Marketing",
+    bullets: [
+      "Thick 14pt gloss, Ultra HD full-color printing",
+      "1–2 day standard turnaround, next-day available",
+      "We'll beat any competitor's price by 10%",
+    ],
+    cta: ["Learn more", "/postcards"],
+    reverse: true,
+  },
+  {
+    img: "/media/email.jpg",
+    alt: "Compass Direct email marketing",
+    title: "E-mail Marketing",
+    bullets: [
+      "Launch a targeted campaign in under 48 hours",
+      "Thousands of demographic targeting criteria",
+      "Detailed, real-time response analytics",
+    ],
+    cta: ["Learn more", "/email-marketing"],
+    reverse: false,
+  },
+];
+
 const triggers: string[] = [
   "New Movers", "New Homeowners", "New Pre-Movers", "New Parents", "New Expecting Parents",
   "New Auto Owners", "New Businesses", "New Building Permits", "New Marriages", "New Engagements",
@@ -84,12 +124,27 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="proof">
-          <div className="container">
-            The preferred choice of more than <strong>3,000</strong> small businesses, corporations,
-            universities, and independent marketers worldwide.
-          </div>
-        </div>
+        {blocks.map((b) => (
+          <section className={`section${b.reverse ? " alt" : ""}`} key={b.title}>
+            <div className={`container altblock${b.reverse ? " reverse" : ""}`}>
+              <div className="altblock-inner">
+                <div className="altblock-img">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={b.img} alt={b.alt} />
+                </div>
+                <div className="altblock-text">
+                  <h2>{b.title}</h2>
+                  <ul className="altblock-list">
+                    {b.bullets.map((x) => (
+                      <li key={x}>{x}</li>
+                    ))}
+                  </ul>
+                  <a className="btn" href={b.cta[1]}>{b.cta[0]}</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        ))}
 
         <section className="lifecycle">
           <div className="container">
@@ -105,42 +160,15 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="products" className="section alt">
+        <section className="section alt">
           <div className="container">
-            <h2>Powerful marketing lists</h2>
+            <h2>Some of our clients</h2>
             <p className="section-sub">
-              Target new prospects with laser guided, state of the art databases — filtered to
-              exactly who you want to reach.
+              Compass Direct is the preferred choice of more than 3,000 small businesses,
+              corporations, universities, and independent marketers worldwide.
             </p>
-            <div className="grid">
-              {listProducts.map((p) => (
-                <a className="card" href={`/${p.slug}`} key={p.slug}>
-                  <h3>{p.name}</h3>
-                  <p>{p.tagline}</p>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container about-inner">
-            <div>
-              <p className="eyebrow">Our Story</p>
-              <h2>We&apos;re only here for one reason: to make you a marketing rockstar.</h2>
-              <a className="btn btn-ghost" href="/our-story">Read our story</a>
-            </div>
-            <div>
-              <p>
-                Founded in 2007, Compass Direct delivers a full range of affordable sales and
-                marketing solutions to help small businesses acquire, manage, and retain new
-                customers.
-              </p>
-              <p>
-                We&apos;re a one-stop shop — high-quality, low-price mailing lists with the best
-                guarantee of accuracy in the industry and the lowest minimum orders around.
-              </p>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="clients-img" src="/media/clients.jpg" alt="A selection of Compass Direct clients" />
           </div>
         </section>
 
